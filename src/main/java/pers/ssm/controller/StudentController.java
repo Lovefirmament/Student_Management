@@ -38,15 +38,7 @@ public class StudentController {
 	}
 	@RequestMapping("/updateSubmit")
 	public String updateStudentSubmit(Model model, Integer id, Student student, MultipartFile pictureFile) throws IllegalStateException, IOException {
-		String originalFilename =  pictureFile.getOriginalFilename();
-		if(pictureFile!=null && originalFilename!=null && originalFilename.length()>0)
-		{
-			String newFileName = UUID.randomUUID().toString()+originalFilename.substring(originalFilename.lastIndexOf("."));
-			File newFile = new File("E:/develop/upload/pic/"+newFileName);
-			pictureFile.transferTo(newFile);
-			student.setPic(newFileName);
-		}
-		studentService.updateStudent(id,student);
+		studentService.updateStudent(id,student,pictureFile);
 		return "redirect:/student/query.action";
 	}
 	@RequestMapping("/insert")
@@ -55,17 +47,9 @@ public class StudentController {
 		return "/jsp/student/insert.jsp";
 	}
 	@RequestMapping("/insertSubmit")
-	public String insertStudent(Model model,Student student, MultipartFile pictureFile)throws IllegalStateException, IOException
+	public String insertStudent(Model model,Student student, MultipartFile pictureFile)throws IOException
 	{
-		String originalFilename =  pictureFile.getOriginalFilename();
-		if(pictureFile!=null && originalFilename!=null && originalFilename.length()>0)
-		{
-			String newFileName = UUID.randomUUID().toString()+originalFilename.substring(originalFilename.lastIndexOf("."));
-			File newFile = new File("E:/develop/upload/pic/"+newFileName);
-			pictureFile.transferTo(newFile);
-			student.setPic(newFileName);
-		}
-		studentService.inertStudent(student);
+		studentService.inertStudent(student,pictureFile);
 		return "redirect:/student/query.action";
 	}
 	@RequestMapping("/delete")
