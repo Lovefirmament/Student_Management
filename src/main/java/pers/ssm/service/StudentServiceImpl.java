@@ -16,6 +16,8 @@ import pers.ssm.po.Student;
 import pers.ssm.po.utils.PageUtil;
 
 public class StudentServiceImpl implements StudentService {
+
+	final String pathname="E:/develop/upload/pic/";
 	@Autowired
      private StudentMapper studentMapper;
 
@@ -36,7 +38,7 @@ public class StudentServiceImpl implements StudentService {
 		if(pictureFile!=null && originalFilename!=null && originalFilename.length()>0)
 		{
 			String newFileName = UUID.randomUUID().toString()+originalFilename.substring(originalFilename.lastIndexOf("."));
-			File newFile = new File("E:/develop/upload/pic/"+newFileName);
+			File newFile = new File(pathname+newFileName);
 			pictureFile.transferTo(newFile);
 			student.setPic(newFileName);
 		}
@@ -50,7 +52,7 @@ public class StudentServiceImpl implements StudentService {
 		if(pictureFile!=null && originalFilename!=null && originalFilename.length()>0)
 		{
 			String newFileName = UUID.randomUUID().toString()+originalFilename.substring(originalFilename.lastIndexOf("."));
-			File newFile = new File("E:/develop/upload/pic/"+newFileName);
+			File newFile = new File(pathname+newFileName);
 			pictureFile.transferTo(newFile);
 			student.setPic(newFileName);
 		}
@@ -63,7 +65,7 @@ public class StudentServiceImpl implements StudentService {
 		// TODO Auto-generated method stub
 		Student student=studentMapper.queryStudentByNo(id);
 		String deleteFileName=student.getPic();
-		File deleteFile = new File("E:/develop/upload/pic/"+deleteFileName);
+		File deleteFile = new File(pathname+deleteFileName);
 		deleteFile.delete();
 		studentMapper.deleteStudentByNo(id);
 	}
