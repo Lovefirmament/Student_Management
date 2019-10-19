@@ -9,13 +9,13 @@
   		<select id="queryStudentByNo" resultType="pers.ssm.po.Student">
   		select * from student where id=#{id}
   		</select>
-  		<update id="updateStudent">
+	     <update id="updateStudent">
   		update student set address=#{address,jdbcType=VARCHAR}
-  		,phone=#{phone,jdbcType=VARCHAR},major=#{major,jdbcType=VARCHAR} where id=#{id,jdbcType=INTEGER}
+  		,phone=#{phone,jdbcType=VARCHAR},pic=#{pic, jdbcType=VARCHAR}where id=#{id,jdbcType=INTEGER}
   		</update>
   		<insert id="insertStudent">
-  		insert into student (name,gender,DOB,phone,address,major) values(
-  		#{name},#{gender},#{DOB},#{phone},#{address},#{major}
+  		insert into student (name,gender,DOB,phone,address,major,pic) values(
+  		#{name},#{gender},#{DOB},#{phone},#{address},#{major},#{pic}
   		)
   		</insert>
   		<delete id="deleteStudentByNo">

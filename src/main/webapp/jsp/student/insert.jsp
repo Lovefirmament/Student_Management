@@ -28,7 +28,7 @@
     <div class="col-sm-4">
     </div>
     <div class="col-sm-3">
-   <form id="insertStudent"  action="${pageContext.request.contextPath }/student/insertSubmit.action" method="post">
+   <form id="insertStudent"  action="${pageContext.request.contextPath }/student/insertSubmit.action" method="post" enctype="multipart/form-data">
 
 
 	  <div class="form-group">
@@ -55,6 +55,14 @@
       <label for="studentaddress">家庭地址</label>
       <input type="text" class="form-control" id="studentaddress"name="address">
       </div>
+       <div class="form-group">
+           <label for="studentpic">个人照片</label>
+           <c:if test="${student.pic !=null}">
+               <img src="/pic/${student.pic}" width=100 height=100/>
+               <br/>
+           </c:if>
+           <input type="file" id="studentpic" name="pictureFile"/>
+       </div>
       <input class="btn btn-primary btn-lg btn1" type="submit" value="新增"  /> 
      </form>
      </div>

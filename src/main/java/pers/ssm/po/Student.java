@@ -10,13 +10,15 @@ public class Student {
 	private String address;
 	private Date DOB;
 	private String major;
-	
+	private String pic;
+
 	public Student() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Student(Integer id, String name, String gender, String phone, String address, Date dOB, String major) {
+	public Student(Integer id, String name, String gender, String phone, String address, Date dOB, String major,
+				   String pic) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -25,6 +27,7 @@ public class Student {
 		this.address = address;
 		DOB = dOB;
 		this.major = major;
+		this.pic = pic;
 	}
 
 	public Integer getId() {
@@ -83,13 +86,17 @@ public class Student {
 		this.major = major;
 	}
 
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", gender=" + gender + ", phone=" + phone + ", address="
-				+ address + ", DOB=" + DOB + ", major=" + major + "]";
+				+ address + ", DOB=" + DOB + ", major=" + major + ", pic=" + pic + "]";
 	}
-
-	
-	
-	
 }
