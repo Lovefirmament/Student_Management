@@ -17,14 +17,14 @@ import pers.ssm.po.Student;
 import pers.ssm.po.utils.PageUtil;
 import pers.ssm.service.StudentService;
 
-@Controller
-@RequestMapping("/student")
+@Controller  //使用Controller标记的类是一个SpringMVC Controller对象
+@RequestMapping("/student") //窄化请求映射，便于对url进行管理
 public class StudentController {
 	@Autowired
 	private StudentService studentService;
 
-
 	@RequestMapping("/query")
+	//HttpServletRequest获取客户端的请求
 	public String queryStudent(Model model,HttpServletRequest http) {
 		PageUtil<Student> pageUtil=studentService.queryStudentByPage(http);
 		model.addAttribute("pageUtil", pageUtil);
@@ -47,13 +47,14 @@ public class StudentController {
 		return "/jsp/student/insert.jsp";
 	}
 	@RequestMapping("/insertSubmit")
+	//MultipartFile是用来接收前台传过来的文件
 	public String insertStudent(Model model,Student student, MultipartFile pictureFile)throws IOException
 	{
 		studentService.inertStudent(student,pictureFile);
 		return "redirect:/student/query.action";
 	}
 	@RequestMapping("/delete")
-	public String deleteStudent(Model model,Integer id)
+	public String deleteStudent(Model model,Integer id)throws IOException
 	{
 		studentService.deleteStudent(id);
 		return "redirect:/student/query.action";

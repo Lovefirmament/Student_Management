@@ -14,10 +14,10 @@ import org.springframework.web.multipart.MultipartFile;
 import pers.ssm.mapper.StudentMapper;
 import pers.ssm.po.Student;
 import pers.ssm.po.utils.PageUtil;
+import pers.ssm.po.utils.PicUtil;
 
 public class StudentServiceImpl implements StudentService {
 
-	final String pathname="E:/develop/upload/pic/";
 	@Autowired
      private StudentMapper studentMapper;
 
@@ -34,39 +34,26 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public void inertStudent(Student student, MultipartFile pictureFile) throws IOException
 	{
-		String originalFilename =  pictureFile.getOriginalFilename();
-		if(pictureFile!=null && originalFilename!=null && originalFilename.length()>0)
-		{
-			String newFileName = UUID.randomUUID().toString()+originalFilename.substring(originalFilename.lastIndexOf("."));
-			File newFile = new File(pathname+newFileName);
-			pictureFile.transferTo(newFile);
-			student.setPic(newFileName);
-		}
+		PicUtil picUtil=new PicUtil();
+		picUtil.setPic(pictureFile,student);
 		studentMapper.insertStudent(student);
 	}
 
 	@Override
 	public void updateStudent(Integer id, Student student,MultipartFile pictureFile) throws IOException
 	{
-		String originalFilename =  pictureFile.getOriginalFilename();
-		if(pictureFile!=null && originalFilename!=null && originalFilename.length()>0)
-		{
-			String newFileName = UUID.randomUUID().toString()+originalFilename.substring(originalFilename.lastIndexOf("."));
-			File newFile = new File(pathname+newFileName);
-			pictureFile.transferTo(newFile);
-			student.setPic(newFileName);
-		}
+		PicUtil picUtil=new PicUtil();
+		picUtil.setPic(pictureFile,student);
 		student.setId(id);
 		studentMapper.updateStudent(student);
 	}
 
 	@Override
-	public void deleteStudent(Integer id) {
+	public void deleteStudent(Integer id) throws IOException{
 		// TODO Auto-generated method stub
 		Student student=studentMapper.queryStudentByNo(id);
-		String deleteFileName=student.getPic();
-		File deleteFile = new File(pathname+deleteFileName);
-		deleteFile.delete();
+		PicUtil picUtil=new PicUtil();
+		picUtil.deletePic(student);
 		studentMapper.deleteStudentByNo(id);
 	}
 

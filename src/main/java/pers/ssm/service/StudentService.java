@@ -18,6 +18,6 @@ public interface StudentService {
 	public Student queryStudentByNo(Integer id);
 	public void inertStudent(Student student, MultipartFile pictureFile)throws IOException;
 	public void updateStudent(Integer id, Student student,MultipartFile pictureFile)throws IOException;
-	public void deleteStudent(Integer id);
+	public void deleteStudent(Integer id) throws IOException;
 	public PageUtil<Student> queryStudentByPage(HttpServletRequest http);
 }

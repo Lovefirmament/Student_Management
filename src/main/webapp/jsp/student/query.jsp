@@ -41,6 +41,7 @@
         <table class="table table-striped">
             <tr>
                 <th>姓名</th>
+                <th>学号</th>
                 <th>性别</th>
                 <th>出生日期</th>
                 <th>专业</th>
@@ -53,6 +54,7 @@
             <c:forEach items="${pageUtil.list}" var="student">
                 <tr>
                     <td>${student.name }</td>
+                    <td>${student.number }</td>
                     <td>${student.gender }</td>
                     <td><fmt:formatDate value="${student.DOB }" pattern="yyyy-MM-dd"/></td>
                     <td>${student.major}</td>

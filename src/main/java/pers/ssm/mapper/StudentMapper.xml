@@ -14,8 +14,8 @@
   		,phone=#{phone,jdbcType=VARCHAR},pic=#{pic, jdbcType=VARCHAR}where id=#{id,jdbcType=INTEGER}
   		</update>
   		<insert id="insertStudent">
-  		insert into student (name,gender,DOB,phone,address,major,pic) values(
-  		#{name},#{gender},#{DOB},#{phone},#{address},#{major},#{pic}
+  		insert into student (name,number,gender,DOB,phone,address,major,pic) values(
+  		#{name},#{number},#{gender},#{DOB},#{phone},#{address},#{major},#{pic}
   		)
   		</insert>
   		<delete id="deleteStudentByNo">

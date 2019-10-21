@@ -5,6 +5,7 @@ import java.util.Date;
 public class Student {
 	private Integer id;
 	private String name;
+	private String number;
 	private String gender;
 	private String phone;
 	private String address;
@@ -22,6 +23,7 @@ public class Student {
 		super();
 		this.id = id;
 		this.name = name;
+		this.number=number;
 		this.gender = gender;
 		this.phone = phone;
 		this.address = address;
@@ -44,6 +46,14 @@ public class Student {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
 	public String getGender() {
@@ -96,7 +106,16 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", gender=" + gender + ", phone=" + phone + ", address="
-				+ address + ", DOB=" + DOB + ", major=" + major + ", pic=" + pic + "]";
+		return "Student{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", number='" + number + '\'' +
+				", gender='" + gender + '\'' +
+				", phone='" + phone + '\'' +
+				", address='" + address + '\'' +
+				", DOB=" + DOB +
+				", major='" + major + '\'' +
+				", pic='" + pic + '\'' +
+				'}';
 	}
 }

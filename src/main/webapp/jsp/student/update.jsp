@@ -35,6 +35,10 @@
       <label for="studentname">姓名</label>
       <input type="text" class="form-control" id="studentname" name="name" readonly="readonly" value="${student.name }"/>
 		</div>
+       <div class="form-group">
+           <label for="studentnumber">学号</label>
+           <input type="text" class="form-control" id="studentnumber"name="number" readonly="readonly" value="${student.number }"/>
+       </div>
 	   <div class="form-group">
       <label for="studentgender">性别</label>
       <input type="text" class="form-control" id="studentgender"name="gender" readonly="readonly" value="${student.gender }"/>
