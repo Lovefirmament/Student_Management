@@ -6,9 +6,10 @@ import pers.ssm.po.Student;
 
 public interface StudentMapper {
       public List<Student> queryAllStudent();
-      public Student queryStudentByNo(Integer id);
+      public Student queryStudentById(Integer id);
+      public Student queryStudentByNo(String number);
       public void updateStudent(Student student);
-      public void deleteStudentByNo(Integer id);
+      public void deleteStudentById(Integer id);
       public void insertStudent(Student student);
       public List<Student> queryStudentByPage(Integer pageStart, Integer pageSize);
       public int totalCount();

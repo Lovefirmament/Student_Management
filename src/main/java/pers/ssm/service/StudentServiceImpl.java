@@ -27,8 +27,13 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Student queryStudentByNo(Integer id) {
-		return studentMapper.queryStudentByNo(id);
+	public Student queryStudentById(Integer id) {
+		return studentMapper.queryStudentById(id);
+	}
+
+	@Override
+	public Student queryStudentByNo(String number) {
+		return studentMapper.queryStudentByNo(number);
 	}
 
 	@Override
@@ -51,10 +56,10 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public void deleteStudent(Integer id) throws IOException{
 		// TODO Auto-generated method stub
-		Student student=studentMapper.queryStudentByNo(id);
+		Student student=studentMapper.queryStudentById(id);
 		PicUtil picUtil=new PicUtil();
 		picUtil.deletePic(student);
-		studentMapper.deleteStudentByNo(id);
+		studentMapper.deleteStudentById(id);
 	}
 
 	@Override

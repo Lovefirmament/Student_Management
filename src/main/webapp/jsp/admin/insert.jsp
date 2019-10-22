@@ -28,7 +28,7 @@
     <div class="col-sm-4">
     </div>
     <div class="col-sm-3">
-   <form id="insertStudent"  action="${pageContext.request.contextPath }/student/insertSubmit.action" method="post" enctype="multipart/form-data">
+   <form id="insertStudent"  action="${pageContext.request.contextPath }/admin/insertSubmit.action" method="post" enctype="multipart/form-data">
 
 
 	  <div class="form-group">

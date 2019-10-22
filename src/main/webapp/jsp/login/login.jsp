@@ -39,6 +39,10 @@
          <p class="lable">密码</p>
          <input type="password" class="form-control form1" name="password" >
          </div>
+           <div class="loginRadio">
+               <input type="radio"  value="0" name="login" checked="checked">学生登陆
+               <input type="radio"   value="1" name="login">管理员登陆
+           </div>
 		  <input class="btn btn-primary btn1" type="submit" value="登录">
         </form>
       </div>

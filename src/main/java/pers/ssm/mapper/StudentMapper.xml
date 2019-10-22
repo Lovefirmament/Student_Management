@@ -6,11 +6,14 @@
   		<select id="queryAllStudent" resultType="pers.ssm.po.Student">
   			select * from student
   		</select>
-  		<select id="queryStudentByNo" resultType="pers.ssm.po.Student">
+  		<select id="queryStudentById" resultType="pers.ssm.po.Student">
   		select * from student where id=#{id}
   		</select>
+	<select id="queryStudentByNo" resultType="pers.ssm.po.Student">
+  		select * from student where number=#{number}
+  		</select>
 	     <update id="updateStudent">
-  		update student set address=#{address,jdbcType=VARCHAR}
+  		update student set name=#{name},number=#{number},gender=#{gender},DOB=#{DOB},address=#{address,jdbcType=VARCHAR}
   		,phone=#{phone,jdbcType=VARCHAR},pic=#{pic, jdbcType=VARCHAR}where id=#{id,jdbcType=INTEGER}
   		</update>
   		<insert id="insertStudent">
@@ -18,7 +21,7 @@
   		#{name},#{number},#{gender},#{DOB},#{phone},#{address},#{major},#{pic}
   		)
   		</insert>
-  		<delete id="deleteStudentByNo">
+  		<delete id="deleteStudentById">
   		delete from student where id=#{id}
   		</delete>
   		<select id="queryStudentByPage" resultType="pers.ssm.po.Student">

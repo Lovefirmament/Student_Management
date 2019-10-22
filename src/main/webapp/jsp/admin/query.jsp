@@ -37,6 +37,7 @@
     </div>
     <div class="col-sm-10 query">
         <h1 class="page-header">学生信息</h1>
+        <a class="btn btn-primary insertbutton" href="${pageContext.request.contextPath }/admin/insert.action">新增 </a>
         <table class="table table-striped">
             <tr>
                 <th>姓名</th>
@@ -47,9 +48,10 @@
                 <th>联系方式</th>
                 <th>地址</th>
                 <th>操作</th>
+                <th>操作</th>
             </tr>
 
-
+            <c:forEach items="${pageUtil.list}" var="student">
                 <tr>
                     <td>${student.name }</td>
                     <td>${student.number }</td>
@@ -58,9 +60,20 @@
                     <td>${student.major}</td>
                     <td>${student.phone }</td>
                     <td>${student.address }</td>
-                    <td><a href="${pageContext.request.contextPath }/student/update.action?id=${student.id}">修改</a></td>
+                    <td><a href="${pageContext.request.contextPath }/admin/update.action?id=${student.id}">修改</a></td>
+                    <td><a href="${pageContext.request.contextPath }/admin/delete.action?id=${student.id}">删除</a></td>
                 </tr>
+            </c:forEach>
         </table>
+        <p class="p1">共${pageUtil.pageNumber}页,当前第${pageUtil.pageCurrent}页,信息条数:${pageUtil.pageCount}条</p>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li><a href="${pageContext.request.contextPath}/admin/query.action?pageCurrent=1">首页</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/query.action?pageCurrent=${pageUtil.pageBefore}">上一页</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/query.action?pageCurrent=${pageUtil.pageAfter}">下一页</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/query.action?pageCurrent=${pageUtil.pageNumber}">尾页</a></li>
+            </ul>
+        </nav>
 
     </div>
    </div>

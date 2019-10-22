@@ -15,7 +15,8 @@ import pers.ssm.po.utils.PageUtil;
 public interface StudentService {
 
 	public List<Student> queryAllStudent();
-	public Student queryStudentByNo(Integer id);
+	public Student queryStudentById(Integer id);
+	public Student queryStudentByNo(String number);
 	public void inertStudent(Student student, MultipartFile pictureFile)throws IOException;
 	public void updateStudent(Integer id, Student student,MultipartFile pictureFile)throws IOException;
 	public void deleteStudent(Integer id) throws IOException;

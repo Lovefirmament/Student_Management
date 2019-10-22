@@ -1,5 +1,6 @@
 package pers.ssm.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +19,24 @@ public class LoginController {
 	private LoginService loginService;
 	
 	@RequestMapping("/login")
-	public String login(Model mdoel,HttpSession session,Login login) {
-		
-		if(loginService.query(login))
+	public String login(Model mdoel, HttpSession session, HttpServletRequest http, Login login) {
+		int type=Integer.parseInt(http.getParameter("login"));
+		login.setType(type);
+		if(loginService.query(login)&&type==1)
+		{
+			String name=login.getName();
+			session.setAttribute("name", name);
+			return "redirect:/admin/query.action";
+		}else if(loginService.query(login)&&type==0)
 		{
 			String name=login.getName();
 			session.setAttribute("name", name);
 			return "redirect:/student/query.action";
-		}else {
+		}
+		else {
 			return "redirect:/jsp/login/login.jsp";
 		}
-	 }
+	}
 	@RequestMapping("/logout")
 	public String logout(Model model,HttpSession session)
 	{
