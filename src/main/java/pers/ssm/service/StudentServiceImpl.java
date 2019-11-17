@@ -1,21 +1,18 @@
 package pers.ssm.service;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import pers.ssm.mapper.StudentMapper;
 import pers.ssm.po.Student;
-import pers.ssm.po.utils.PageUtil;
-import pers.ssm.po.utils.PicUtil;
+import pers.ssm.tool.utils.PageUtil;
+import pers.ssm.tool.utils.PicUtil;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.List;
+
+@Service
 public class StudentServiceImpl implements StudentService {
 
 	@Autowired
@@ -26,10 +23,6 @@ public class StudentServiceImpl implements StudentService {
 		return studentMapper.queryAllStudent();
 	}
 
-	@Override
-	public Student queryStudentById(Integer id) {
-		return studentMapper.queryStudentById(id);
-	}
 
 	@Override
 	public Student queryStudentByNo(String number) {
@@ -39,34 +32,38 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public void inertStudent(Student student, MultipartFile pictureFile) throws IOException
 	{
-		PicUtil picUtil=new PicUtil();
-		picUtil.setPic(pictureFile,student);
+		if(pictureFile!=null)
+		{
+			PicUtil picUtil = new PicUtil();
+			picUtil.setPic(pictureFile, student);
+		}
 		studentMapper.insertStudent(student);
 	}
 
 	@Override
-	public void updateStudent(Integer id, Student student,MultipartFile pictureFile) throws IOException
+	public void updateStudent(Student student, MultipartFile pictureFile) throws IOException
 	{
-		PicUtil picUtil=new PicUtil();
-		picUtil.setPic(pictureFile,student);
-		student.setId(id);
+		if(pictureFile!=null) {
+			PicUtil picUtil = new PicUtil();
+			picUtil.setPic(pictureFile, student);
+		}
 		studentMapper.updateStudent(student);
 	}
 
 	@Override
-	public void deleteStudent(Integer id) throws IOException{
+	public void deleteStudent(String number) throws IOException{
 		// TODO Auto-generated method stub
-		Student student=studentMapper.queryStudentById(id);
+		Student student=studentMapper.queryStudentByNo(number);
 		PicUtil picUtil=new PicUtil();
 		picUtil.deletePic(student);
-		studentMapper.deleteStudentById(id);
+		studentMapper.deleteStudentByNo(number);
 	}
 
 	@Override
 	public PageUtil<Student> queryStudentByPage(HttpServletRequest http) {
 		int pageCurrent=1;
-		int pageSize=5;
-		int pageCount=studentMapper.totalCount();
+		int pageSize=5;    //一页的条数
+		int pageCount=studentMapper.totalCount(); //总数据条数
 		
 		PageUtil<Student> pageUtil=new PageUtil<Student>();
 		if(http.getParameter("pageCurrent")!=null) {

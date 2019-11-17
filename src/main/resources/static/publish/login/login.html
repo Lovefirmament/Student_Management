@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../css/lib/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/login.css">
+</head>
+<body>
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <span class="navbar-brand">学生信息管理系统</span>
+      </div>
+      <div id="navbar" >
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">注册</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+<div class="col-sm-4">
+</div>
+<div class="col-sm-3">
+  <div class="row">
+   <form class="login"  action="../../login" method="post">
+     <div class="form-group">
+     <p class="lable">用户名</p>
+     <input type="text" class="form-control form1" name="name" >
+     </div>
+     <div class="form-group">
+     <p class="lable">密码</p>
+     <input type="password" class="form-control form1" name="password" >
+     </div>
+     <div class="loginRadio">
+       <input type="radio"  value="0" name="type" checked="checked">学生登陆
+       <input type="radio"   value="1" name="type">管理员登陆
+     </div>
+    <input class="btn btn-primary btn1" type="submit" value="登录">
+    </form>
+  </div>
+</div>
+ <div class="col-sm-5">
+</div>
+</div>
+</body>
+</html>

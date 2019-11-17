@@ -1,0 +1,24 @@
+package pers.ssm.tool.converter;
+
+import org.springframework.core.convert.converter.Converter;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class StudentDateConverter implements Converter<String, Date> {
+
+	@Override
+	public Date convert(String source) {
+		// ת����������
+		SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			return simpleDateFormat.parse(source);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+}

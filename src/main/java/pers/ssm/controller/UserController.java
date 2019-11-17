@@ -15,9 +15,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/user")
 @CrossOrigin
-public class AdminController {
+public class UserController {
     @Autowired
     private StudentService studentService;
 
@@ -25,9 +25,9 @@ public class AdminController {
     @ResponseBody
     public StudentVo queryStudentpage(HttpSession session, HttpServletRequest http) {
         String name=(String)session.getAttribute("name");
-        PageUtil<Student> pageStudentList=studentService.queryStudentByPage(http);
+        Student student=studentService.queryStudentByNo(name);
         StudentVo studentVo=new StudentVo();
-        studentVo.setPageStudentList(pageStudentList);
+        studentVo.setStudent(student);
         studentVo.setUserId(name);
         return studentVo;
     }
@@ -44,19 +44,7 @@ public class AdminController {
     @RequestMapping("/updatesubmit")
     public String updateStudentSubmit(Student student, MultipartFile pictureFile) throws IllegalStateException, IOException {
         studentService.updateStudent(student,pictureFile);
-        return "redirect:/publish/admin/query.html";
-    }
-    @RequestMapping("/insertsubmit")
-    public String insertStudent(Student student, MultipartFile pictureFile)throws IOException
-    {
-        studentService.inertStudent(student,pictureFile);
-        return "redirect:/publish/admin/query.html";
+        return "redirect:/publish/user/query.html";
     }
 
-    @RequestMapping("/delete")
-    public String deleteStudent(String number)throws IOException
-    {
-        studentService.deleteStudent(number);
-        return "redirect:/publish/admin/query.html";
-    }
 }

@@ -3,42 +3,14 @@ package pers.ssm.po;
 import java.util.Date;
 
 public class Student {
-	private Integer id;
 	private String name;
 	private String number;
 	private String gender;
 	private String phone;
 	private String address;
-	private Date DOB;
+	private Date dob;
 	private String major;
 	private String pic;
-
-	public Student() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Student(Integer id, String name, String gender, String phone, String address, Date dOB, String major,
-				   String pic) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.number=number;
-		this.gender = gender;
-		this.phone = phone;
-		this.address = address;
-		DOB = dOB;
-		this.major = major;
-		this.pic = pic;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -80,12 +52,12 @@ public class Student {
 		this.address = address;
 	}
 
-	public Date getDOB() {
-		return DOB;
+	public Date getDob() {
+		return dob;
 	}
 
-	public void setDOB(Date dOB) {
-		DOB = dOB;
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 
 	public String getMajor() {
@@ -102,20 +74,5 @@ public class Student {
 
 	public void setPic(String pic) {
 		this.pic = pic;
-	}
-
-	@Override
-	public String toString() {
-		return "Student{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", number='" + number + '\'' +
-				", gender='" + gender + '\'' +
-				", phone='" + phone + '\'' +
-				", address='" + address + '\'' +
-				", DOB=" + DOB +
-				", major='" + major + '\'' +
-				", pic='" + pic + '\'' +
-				'}';
 	}
 }
