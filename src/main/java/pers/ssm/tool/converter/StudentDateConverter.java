@@ -10,7 +10,6 @@ public class StudentDateConverter implements Converter<String, Date> {
 
 	@Override
 	public Date convert(String source) {
-		// ת����������
 		SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			return simpleDateFormat.parse(source);

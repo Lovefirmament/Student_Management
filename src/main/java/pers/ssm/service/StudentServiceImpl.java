@@ -2,6 +2,9 @@ package pers.ssm.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import pers.ssm.mapper.StudentMapper;
 import pers.ssm.po.Student;
@@ -13,6 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
+@Transactional(propagation = Propagation.REQUIRED,isolation= Isolation.DEFAULT)
 public class StudentServiceImpl implements StudentService {
 
 	@Autowired
@@ -48,6 +52,7 @@ public class StudentServiceImpl implements StudentService {
 			picUtil.setPic(pictureFile, student);
 		}
 		studentMapper.updateStudent(student);
+
 	}
 
 	@Override

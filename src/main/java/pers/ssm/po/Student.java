@@ -12,6 +12,7 @@ public class Student {
 	private String major;
 	private String pic;
 
+
 	public String getName() {
 		return name;
 	}
